@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Utpal Mohanta - App Developer Portfolio">
+    <title>Utpal Mohanta | Android & Flutter App Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap');
+        
+        :root { --tw-color-primary: #6366f1; }
+        
+        * { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        
+        .hero-bg { background: linear-gradient(90deg, #4f46e5 0%, #7e22ce 100%); }
+        .dark .hero-bg { background: linear-gradient(90deg, #312e81 0%, #581c87 100%); }
+        
+        .nav-link { position: relative; }
+        .nav-link:after {
+            content: ''; position: absolute; width: 0; height: 3px; bottom: -2px; left: 0;
+            background-color: #a855f7;
+        }
+        .nav-link:hover:after, .nav-link.active:after { width: 100%; }
+        
+        .section-header:after {
+            content: ''; position: absolute; width: 60px; height: 4px;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            bottom: -6px; left: 0; border-radius: 9999px;
+        }
+        
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+        
+        .project-card {
+            transition: all 0.4s ease;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
+    
+    <!-- HERO SECTION -->
+    <header id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 py-12 w-full">
+            <div class="flex justify-between items-center mb-12">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-white/20 backdrop-blur-lg rounded-2xl flex items-center justify-center text-white text-xl font-bold">UM</div>
+                    <span class="text-white text-2xl font-semibold tracking-tight">Utpal Mohanta</span>
+                </div>
+                
+                <div id="live-clock" class="clock bg-white/10 backdrop-blur-2xl text-white text-xl px-8 py-2 rounded-3xl flex items-center gap-2">
+                    <i class="fa-solid fa-clock"></i>
+                    <span id="clock-time" class="tabular-nums">00:00:00</span>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleDarkMode()" class="flex items-center gap-2 bg-white/90 hover:bg-white text-zinc-900 px-6 py-3 rounded-3xl font-medium">
+                        <i class="fa-solid fa-moon"></i>
+                        <span id="dark-mode-text">Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white text-sm font-medium px-5 py-2 rounded-3xl mb-6">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        AVAILABLE FOR FREELANCE / FULL-TIME
+                    </div>
+                    
+                    <h1 class="text-7xl md:text-8xl font-semibold tracking-tighter leading-none text-white mb-4">
+                        Utpal Mohanta
+                    </h1>
+                    
+                    <p class="text-3xl md:text-4xl text-white/90 font-light mb-8">
+                        Professional App Developer
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-12">
+                        <button onclick="viewCV()" 
+                                class="flex items-center justify-center gap-3 bg-white text-indigo-700 hover:bg-amber-300 hover:text-indigo-800 px-8 py-5 rounded-3xl text-xl font-semibold">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            View My CV
+                        </button>
+                    </div>
+                    
+                    <nav class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-3 text-white text-lg font-medium">
+                        <a onclick="navigateToSection('about')" class="nav-link cursor-pointer">About</a>
+                        <a onclick="navigateToSection('experience')" class="nav-link cursor-pointer">Experience</a>
+                        <a onclick="navigateToSection('skills')" class="nav-link cursor-pointer">Skills</a>
+                        <a onclick="navigateToSection('projects')" class="nav-link cursor-pointer">Projects</a>
+                        <a onclick="navigateToSection('services')" class="nav-link cursor-pointer">Services</a>
+                        <a onclick="navigateToSection('contact')" class="nav-link cursor-pointer">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-6 bg-gradient-to-br from-purple-400 to-pink-400 rounded-[4rem] rotate-12 opacity-30 blur-3xl"></div>
+                        <div class="relative w-80 h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden border-8 border-white/30 shadow-2xl">
+                            <img src="profile.jpg" alt="Utpal Mohanta" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="max-w-7xl mx-auto px-6">
+        
+        <!-- ABOUT -->
+        <section id="about" class="py-24">
+            <h2 class="section-header text-5xl font-semibold mb-8">About Me</h2>
+            <p class="text-xl leading-relaxed max-w-3xl">
+                I am a passionate Mobile App Developer with expertise in building high-quality Android and cross-platform applications. 
+                Currently working at <strong>Hishabee Technologies Limited</strong>, I specialize in creating smooth, user-friendly, and scalable mobile apps using modern technologies.
+            </p>
+        </section>
+        
+        <!-- EXPERIENCE -->
+        <section id="experience" class="py-24 bg-white dark:bg-zinc-900 rounded-3xl mb-12">
+            <div class="px-8">
+                <h2 class="section-header text-5xl font-semibold mb-12">Experience</h2>
+                <div class="flex gap-8">
+                    <div class="text-right md:w-64 shrink-0">
+                        <p class="text-emerald-500 font-semibold">Present</p>
+                        <p class="text-zinc-500">Hishabee Technologies Limited</p>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold">Mobile App Developer</h3>
+                        <p class="text-zinc-600 dark:text-zinc-300">Developing and maintaining Android & Flutter applications. Working on production-level apps with clean architecture and MVVM pattern.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SKILLS -->
+        <section id="skills" class="py-24">
+            <h2 class="section-header text-5xl font-semibold mb-12">Skills & Technologies</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">Java</div>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">Kotlin</div>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">Dart</div>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">Flutter</div>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">Jetpack Compose</div>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">MVVM Architecture</div>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">XML</div>
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl text-center card-hover">Android Studio</div>
+            </div>
+        </section>
+        
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="py-24 bg-white dark:bg-zinc-900 rounded-3xl mb-12">
+            <div class="px-8">
+                <h2 class="section-header text-5xl font-semibold mb-12 text-center">Featured Projects</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Project 1 -->
+                    <div class="project-card bg-zinc-50 dark:bg-zinc-800 rounded-3xl overflow-hidden shadow-lg">
+                        <div class="h-52 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-6xl">
+                            🛒
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-2xl font-semibold mb-2">E-Commerce App (Hishabee Shop)</h3>
+                            <p class="text-zinc-600 dark:text-zinc-400 mb-4">Full-featured e-commerce mobile app with product catalog, cart, payment integration and order tracking.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full">Flutter</span>
+                                <span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-700 px-3 py-1 rounded-full">Dart</span>
+                                <span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 px-3 py-1 rounded-full">MVVM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card bg-zinc-50 dark:bg-zinc-800 rounded-3xl overflow-hidden shadow-lg">
+                        <div class="h-52 bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center text-6xl">
+                            📱
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-2xl font-semibold mb-2">Task Management App</h3>
+                            <p class="text-zinc-600 dark:text-zinc-400 mb-4">Beautiful task manager with offline support, reminders, dark mode and team collaboration features.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-cyan-100 dark:bg-cyan-900 text-cyan-700 px-3 py-1 rounded-full">Kotlin</span>
+                                <span class="text-xs bg-amber-100 dark:bg-amber-900 text-amber-700 px-3 py-1 rounded-full">Jetpack Compose</span>
+                                <span class="text-xs bg-red-100 dark:bg-red-900 text-red-700 px-3 py-1 rounded-full">Room DB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card bg-zinc-50 dark:bg-zinc-800 rounded-3xl overflow-hidden shadow-lg">
+                        <div class="h-52 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-6xl">
+                            🏥
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-2xl font-semibold mb-2">Health & Fitness Tracker</h3>
+                            <p class="text-zinc-600 dark:text-zinc-400 mb-4">Fitness tracking app with step counter, workout planner, calorie tracker and progress analytics.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-green-100 dark:bg-green-900 text-green-700 px-3 py-1 rounded-full">Flutter</span>
+                                <span class="text-xs bg-purple-100 dark:bg-purple-900 text-purple-700 px-3 py-1 rounded-full">Dart</span>
+                                <span class="text-xs bg-sky-100 dark:bg-sky-900 text-sky-700 px-3 py-1 rounded-full">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card bg-zinc-50 dark:bg-zinc-800 rounded-3xl overflow-hidden shadow-lg">
+                        <div class="h-52 bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-6xl">
+                            📚
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-2xl font-semibold mb-2">Education Management App</h3>
+                            <p class="text-zinc-600 dark:text-zinc-400 mb-4">School/College management app for attendance, result, assignment and parent-teacher communication.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-700 px-3 py-1 rounded-full">Kotlin</span>
+                                <span class="text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-700 px-3 py-1 rounded-full">MVVM</span>
+                                <span class="text-xs bg-teal-100 dark:bg-teal-900 text-teal-700 px-3 py-1 rounded-full">Jetpack Compose</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <!-- SERVICES -->
+        <section id="services" class="py-24">
+            <h2 class="section-header text-5xl font-semibold mb-12 text-center">Services</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white dark:bg-zinc-800 rounded-3xl p-8">
+                    <i class="fa-solid fa-mobile-screen-button text-5xl text-blue-500 mb-6"></i>
+                    <h4 class="text-3xl font-semibold mb-3">Android App Development</h4>
+                    <p class="text-zinc-600 dark:text-zinc-400">Native Android apps using Kotlin, Java, Jetpack Compose & MVVM.</p>
+                </div>
+                <div class="card-hover bg-white dark:bg-zinc-800 rounded-3xl p-8">
+                    <i class="fa-solid fa-layer-group text-5xl text-purple-500 mb-6"></i>
+                    <h4 class="text-3xl font-semibold mb-3">Flutter App Development</h4>
+                    <p class="text-zinc-600 dark:text-zinc-400">Cross-platform apps (Android + iOS) using Flutter & Dart.</p>
+                </div>
+                <div class="card-hover bg-white dark:bg-zinc-800 rounded-3xl p-8">
+                    <i class="fa-solid fa-cogs text-5xl text-teal-500 mb-6"></i>
+                    <h4 class="text-3xl font-semibold mb-3">App Maintenance &amp; UI/UX</h4>
+                    <p class="text-zinc-600 dark:text-zinc-400">App optimization, updates, bug fixing, and modern UI implementation.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CONTACT -->
+        <section id="contact" class="py-24 bg-white dark:bg-zinc-900 rounded-3xl">
+            <div class="px-8">
+                <h2 class="text-5xl font-semibold mb-8">Get In Touch</h2>
+                <p class="text-xl mb-8">I'm open to new opportunities and exciting app development projects.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="font-medium">Email:</p>
+                        <a href="mailto:your.utpalmohanta517@gmail.com" class="text-indigo-600 text-lg">utpalmohanta517@gmail.com</a>
+                    </div>
+                    <div>
+                        <p class="font-medium">Phone:</p>
+                        <p class="text-lg">+880 1761089484</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-zinc-900 text-white py-12 text-center">
+        <p>© Utpal Mohanta • Passionate App Developer</p>
+    </footer>
+    
+    <script>
+        function startLiveClock() {
+            setInterval(() => {
+                const time = new Date().toLocaleTimeString('en-US', {hour12: false});
+                document.getElementById('clock-time').textContent = time;
+            }, 1000);
+        }
+        
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const text = document.getElementById('dark-mode-text');
+            text.textContent = document.documentElement.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+        }
+        
+        function navigateToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+        }
+        
+        function viewCV() {
+            alert("CV Download Feature Coming Soon!\n\nYou can replace this with your actual PDF link.");
+        }
+        
+        window.onload = startLiveClock;
+    </script>
+</body>
+</html>
